@@ -1,7 +1,6 @@
 package io.orionprotocol;
 
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.WebDriverProvider;
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -13,13 +12,10 @@ public class BaseTest {
 
     @BeforeEach
     void setUp() {
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
-        Driver.initDriver();
 
-//        DesiredCapabilities capabilities = new DesiredCapabilities();
-//        capabilities.setCapability( "enableVNC",  true);
-//        capabilities.setCapability( "enableVideo", true);
-//        Configuration.browserCapabilities = capabilities;
+        Driver.initDriver();
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
+
     }
 
     @AfterEach

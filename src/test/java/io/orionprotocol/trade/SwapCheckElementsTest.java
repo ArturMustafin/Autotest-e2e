@@ -1,8 +1,8 @@
 package io.orionprotocol.trade;
 
 
-import io.orionprotocol.AppConfigTesting;
 import io.orionprotocol.BaseTest;
+import io.orionprotocol.Environment;
 import io.orionprotocol.pages.trade.page.SwapPage;
 import io.qameta.allure.Epic;
 import org.junit.jupiter.api.DisplayName;
@@ -26,7 +26,7 @@ public class SwapCheckElementsTest extends BaseTest {
     @MethodSource("dataListForMenu")
     @DisplayName("Проверка левого меню")
     void checkLeftMenuTest(String endPoint, String url) {
-        open(AppConfigTesting.URL_SWAP, SwapPage.class)
+        open(Environment.URL_SWAP, SwapPage.class)
                 .getLeftNavigation()
                 .goToPage(endPoint)
                 .checkUrlPage(url);
@@ -34,21 +34,21 @@ public class SwapCheckElementsTest extends BaseTest {
 
     private static Stream<Arguments> dataListForMenu() {
         return Stream.of(
-                Arguments.of("/swap", AppConfigTesting.URL_SWAP),
-                Arguments.of("/trade", AppConfigTesting.URL_TRADE),
-                Arguments.of("/dashboard/bridge", AppConfigTesting.URL_BRIDGE),
-                Arguments.of("/governance", AppConfigTesting.URL_GOVERNANCE),
-                Arguments.of("/pools/farming", AppConfigTesting.URL_POOLS),
-                Arguments.of("/ido", AppConfigTesting.URL_IDO),
-                Arguments.of("/stats", AppConfigTesting.URL_STATS),
-                Arguments.of("/fiat", AppConfigTesting.URL_FIAT)
+                Arguments.of("/swap", Environment.URL_SWAP),
+                Arguments.of("/trade", Environment.URL_TRADE),
+                Arguments.of("/dashboard/bridge", Environment.URL_DASHBOARD_BRIDGE),
+                Arguments.of("/governance", Environment.URL_GOVERNANCE),
+                Arguments.of("/pools/farming", Environment.URL_POOLS),
+                Arguments.of("/ido", Environment.URL_IDO),
+                Arguments.of("/stats", Environment.URL_STATS),
+                Arguments.of("/fiat", Environment.URL_FIAT)
         );
     }
 
     @Test
     @DisplayName("Тест открытия popup кошелька  из 'Add wallet' button")
     void openingPopupWalletFromAddWalletButtonTest() {
-        open(AppConfigTesting.URL_SWAP, SwapPage.class)
+        open(Environment.URL_SWAP, SwapPage.class)
                 .clickAddWalletButton()
                 .checkTextAddWalletPopup();
     }
@@ -56,7 +56,7 @@ public class SwapCheckElementsTest extends BaseTest {
     @Test
     @DisplayName("Тест ввода чисел в From и вывод ответа в To")
     void checkInputFieldTestFromTest() {
-        open(AppConfigTesting.URL_SWAP, SwapPage.class)
+        open(Environment.URL_SWAP, SwapPage.class)
                 .enterRandomNumbersInFieldFrom()
                 .checkInputFieldTo();
     }
@@ -64,7 +64,7 @@ public class SwapCheckElementsTest extends BaseTest {
     @Test
     @DisplayName("Тест ввода чисел в To и вывод ответа в From")
     void checkInputFieldTestToTest() {
-        open(AppConfigTesting.URL_SWAP, SwapPage.class)
+        open(Environment.URL_SWAP, SwapPage.class)
                 .enterRandomNumbersInFieldTo()
                 .checkInputFieldFrom();
     }
@@ -73,7 +73,7 @@ public class SwapCheckElementsTest extends BaseTest {
     @ValueSource(strings = {"1D", "1W", "1M", "1Y"})
     @DisplayName("Выбрать отчетный период для графика")
     void checkTimePeriodButtonsTest(String reportingPeriod) {
-        open(AppConfigTesting.URL_SWAP, SwapPage.class)
+        open(Environment.URL_SWAP, SwapPage.class)
                 .clickGotItButton()
                 .checkTimePeriodButtons(reportingPeriod);
     }
@@ -81,7 +81,7 @@ public class SwapCheckElementsTest extends BaseTest {
     @Test
     @DisplayName("Тест открытия графика canvas")
     void openDiagramTest() {
-        open(AppConfigTesting.URL_SWAP, SwapPage.class)
+        open(Environment.URL_SWAP, SwapPage.class)
                 .clickGotItButton()
                 .checkDiagram();
     }
@@ -90,7 +90,7 @@ public class SwapCheckElementsTest extends BaseTest {
     @ValueSource(strings = {"Learn How to Trade on Orion Terminal"})
     @DisplayName("Переход на страницу YouTube")
     void goToYouTubeTest(String textHowToTrade) {
-        open(AppConfigTesting.URL_SWAP, SwapPage.class)
+        open(Environment.URL_SWAP, SwapPage.class)
                 .clickLearnHowToTrade(textHowToTrade)
                 .checkNameVideo(textHowToTrade)
                 .checkUrlPage();
@@ -99,7 +99,7 @@ public class SwapCheckElementsTest extends BaseTest {
     @Test
     @DisplayName("Переход в Add Wallet(popup) через кнопку Add Wallet")
     void addWalletAndClosePopupTest() {
-        open(AppConfigTesting.URL_SWAP, SwapPage.class)
+        open(Environment.URL_SWAP, SwapPage.class)
                 .clickTextAddWallet()
                 .checkTextAddWalletPopup()
                 .closeAddWalletPopup()
@@ -109,7 +109,7 @@ public class SwapCheckElementsTest extends BaseTest {
     @Test
     @DisplayName("Переход в Add Wallet(popup) через хедер ConnectWallet")
     void popupWalletWithConnectWalletTest() {
-        open(AppConfigTesting.URL_SWAP, SwapPage.class)
+        open(Environment.URL_SWAP, SwapPage.class)
                 .getTradeHeaderBlock()
                 .clickTextConnectWallet()
                 .checkTextAddWalletPopup();
