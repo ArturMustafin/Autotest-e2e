@@ -20,9 +20,9 @@ public class SwapPage extends TradeBasePage {
 
     private final SelenideElement inputFieldFrom = $x("//label[@class='InputText_root__2Cgmo SwapSpending_input__dubuc']/input");
     private final SelenideElement inputFieldTo = $x("//label[@class='InputText_root__2Cgmo SwapReceiving_input__3lo_m']/input");
-    private final SelenideElement gotItButton = $x("//button[text()='Got it!']");
 
 
+    //=================================================== Form swap ====================================================
     @Step("Нажать на кнопку 'Add Wallet'")
     public SwapPage clickAddWalletButton() {
         $x("//button[text()='Add Wallet']")
@@ -40,7 +40,7 @@ public class SwapPage extends TradeBasePage {
 
     @Step("Проверить поле ввода To = !null")
     public void checkInputFieldTo() {
-        assertNotNull(inputFieldFrom
+        assertNotNull(inputFieldTo
                 .shouldBe(visible, ofSeconds(6))
                 .getAttribute("value"));
     }
@@ -62,55 +62,7 @@ public class SwapPage extends TradeBasePage {
                 .getAttribute("value"));
     }
 
-    @Step("Нажать на кнопку 'Got it!'")
-    public SwapPage clickGotItButton() {
-        gotItButton.click();
-        return this;
-    }
-
-    @Step("Проверить наличие диаграмму")
-    public void checkDiagram() {
-        $x("//div[@class='chartjs-size-monitor']/../canvas")
-                .shouldBe(visible, ofSeconds(6));
-    }
-
-    @Step("Проверить кнопку {0}")
-    public void checkTimePeriodButtons(String reportingPeriod) {
-        assertTrue(
-                $x("//div[@class='SwapChart_toolbar__16M92']//div[text()='" + reportingPeriod + "']")
-                        .shouldBe(visible, ofSeconds(5))
-                        .isDisplayed());
-    }
-
-    @Step("Нажать на гиперссылку: {0}")
-    public YouTubePage clickLearnHowToTrade(String text) {
-        $x("//a[text()='" + text + "']").click();
-        switchTo().window(1);
-        return page(YouTubePage.class);
-    }
-
-    @Step("Нажать на текст: {0}")
-    public SwapPage clickTextAddWallet() {
-        $x("//div[text()='Add your wallet']").click();
-        return this;
-    }
-
-    @Step("Проверить текст на popup: Add Wallet")
-    public SwapPage checkTextAddWalletPopup() {
-        $x("//div[@class='Popup_root__2Q_OX']//div[text()='Add Wallet']")
-                .shouldBe(visible)
-                .shouldHave(text("Add Wallet"));
-        return this;
-    }
-
-    @Step("Нажать закрыть popup")
-    public SwapPage closeAddWalletPopup() {
-        $x("//div[@class='Popup_root__2Q_OX']//div[@class='Icon_root__1SgNj Icon_theme__2vDcE']")
-                .click();
-        return this;
-    }
-
-//картинки токенов в dropDown
+    //картинки токенов в dropDown
 //    private final SelenideElement dropDownFormTokenButton = $x("//div[@class='SwapSpending_currencyPicker__fZoFP']");
 //    private final SelenideElement dropDownToTokenButton = $(By.className("SwapReceiving_currencyPicker__38Eqi"));
 //    public void getList() {
@@ -124,4 +76,73 @@ public class SwapPage extends TradeBasePage {
 //        tokens.stream();
 //        int c = 0;
 //    }
+
+
+    //=========================================== Welcome to Orion Terminal! ===========================================
+    @Step("Нажать на кнопку 'Got it!'")
+    public SwapPage clickGotItButton() {
+        $x("//button[text()='Got it!']").click();
+        return this;
+    }
+
+    @Step("Нажать на гиперссылку: {0}")
+    public YouTubePage clickLearnHowToTrade(String text) {
+        $x("//a[text()='" + text + "']")
+                .shouldBe(visible,ofSeconds(6)).click();
+        switchTo().window(1);
+        return page(YouTubePage.class);
+    }
+
+    @Step("Нажать на текст: 'Add your wallet'")
+    public SwapPage clickTextAddYourWallet() {
+        $x("//div[text()='Add your wallet']")
+                .shouldBe(visible,ofSeconds(6))
+                .click();
+        return this;
+    }
+
+    @Step("Проверить переход в /swap")
+    public void checkSwapWebsite() {
+        $x("//h1[text()='Welcome to Orion Terminal!']")
+                .shouldBe(visible, ofSeconds(6))
+                .shouldHave(text("Welcome to Orion Terminal!"));
+    }
+
+
+    //=================================================== Диаграмма ====================================================
+    @Step("Проверить наличие диаграмму")
+    public void checkDiagram() {
+        $x("//div[@class='chartjs-size-monitor']/../canvas")
+                .shouldBe(visible, ofSeconds(6));
+    }
+
+    @Step("Проверить кнопку {0}")
+    public void checkTimePeriodButtons(String reportingPeriod) {
+        assertTrue(
+                $x("//div[@class='SwapChart_toolbar__16M92']//div[text()='" + reportingPeriod + "']")
+                        .shouldBe(visible, ofSeconds(6))
+                        .isDisplayed());
+    }
+
+
+    //====================================================== FEE =======================================================
+    @Step("Нажать: 'How to reduce fee?'")
+    public SwapPage clickHowToReduceFee() {
+        $x("//div[text()='How to reduce fee?']")
+                .shouldBe(visible, ofSeconds(6)).click();
+        return this;
+    }
+
+    @Step("Проверить popup на текст: 'Pay less fee per trade'")
+    public SwapPage checkTextPayLessFeePopup() {
+        $x("//div[@class='Popup_popup__1RZqf']//div[text()='Pay less fee per trade']")
+                .shouldBe(visible)
+                .shouldHave(text("Pay less fee per trade"));
+        return this;
+    }
+
+    @Step("Нажать закрыть: Pay less fee per trade(popup)")
+    public void closeFeePopup() {
+        $x("//div[@class='Popup_closeButtonWrapper__3gYz3']").click();
+    }
 }
