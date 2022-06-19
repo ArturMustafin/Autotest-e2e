@@ -15,7 +15,7 @@ import java.util.Map;
 public class Driver {
     public static void initDriver() {
 
-        //Configuration.remote = "http://localhost:4444/wd/hub";
+        Configuration.remote = "http://localhost:4444/wd/hub";
         Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1080";
 
