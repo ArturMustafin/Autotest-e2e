@@ -15,6 +15,7 @@
 ////@ExtendWith(ConfigExtension.class)
 //public class MainPageTest extends BaseTest {
 //
+//      TODO сделать ParameterizedTest
 //    @Test
 //    @DisplayName("Переход кнопки BUY ORN")
 //    void checkTransitionBuyOrnButtonTest() {

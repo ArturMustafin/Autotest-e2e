@@ -5,6 +5,7 @@ import io.orionprotocol.BaseTest;
 import io.orionprotocol.Environment;
 import io.orionprotocol.pages.trade.page.SwapPage;
 import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -12,6 +13,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 
 @Epic(value = "Тесты UI: trade.orionprotocol.io")
+@Feature(value = "Swap")
 @DisplayName("Тесты формы Swap")
 //@ExtendWith(ConfigExtension.class)
 public class SwapFormTest extends BaseTest {

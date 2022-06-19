@@ -4,6 +4,7 @@ import io.orionprotocol.BaseTest;
 import io.orionprotocol.Environment;
 import io.orionprotocol.pages.trade.page.SwapPage;
 import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -13,6 +14,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 
 @Epic(value = "Тесты UI: trade.orionprotocol.io")
+@Feature(value = "Swap")
 @DisplayName("Тесты Welcome to Orion Terminal!")
 public class SwapInfoTest extends BaseTest {
 
