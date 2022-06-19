@@ -1,25 +1,15 @@
 package io.orionprotocol;
 
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.WebDriverProvider;
 import com.codeborne.selenide.WebDriverRunner;
-import com.codeborne.selenide.logevents.SelenideLogger;
-import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 
 
 public class BaseTest {
 
-    @BeforeEach
-    void setUp() {
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
+    @BeforeAll
+    static void setUp() {
         Driver.initDriver();
-
-//        DesiredCapabilities capabilities = new DesiredCapabilities();
-//        capabilities.setCapability( "enableVNC",  true);
-//        capabilities.setCapability( "enableVideo", true);
-//        Configuration.browserCapabilities = capabilities;
     }
 
     @AfterEach

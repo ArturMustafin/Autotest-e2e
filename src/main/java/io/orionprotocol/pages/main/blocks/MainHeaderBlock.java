@@ -1,13 +1,13 @@
 package io.orionprotocol.pages.main.blocks;
 
-;
 import com.codeborne.selenide.WebDriverRunner;
-import io.orionprotocol.AppConfigProd;
+import io.orionprotocol.Environment;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class MainHeaderBlock {
@@ -25,6 +25,6 @@ public class MainHeaderBlock {
 
     @Step("Проверить переход на страницу")
     public void checkPage() {
-        assertThat(WebDriverRunner.getWebDriver().getCurrentUrl()).contains(AppConfigProd.URL_HOME);
+        assertThat(WebDriverRunner.getWebDriver().getCurrentUrl()).contains(Environment.URL_HOME);
     }
 }
