@@ -28,6 +28,7 @@ jobs:
   allure:
     needs:
       - build
+    if: always()()
     name: Generate Allure Report
     runs-on: ubuntu-latest
     steps:
