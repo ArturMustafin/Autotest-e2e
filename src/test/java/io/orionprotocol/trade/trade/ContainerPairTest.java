@@ -16,6 +16,7 @@ import static com.codeborne.selenide.Selenide.open;
 @Epic(value = "Тесты UI: trade.orionprotocol.io")
 @Feature(value = "Trade")
 @DisplayName("Тесты контейнера торговых пар")
+//@ExtendWith(SelenoidExtension.class)
 public class ContainerPairTest extends BaseTest {
 
     @Test

@@ -70,7 +70,6 @@ public class SwapPage extends TradeBasePage {
 //
 //        List<String> links = new ArrayList<>();
 //        int a = 0;
-//        int b = 0;
 //        dropDownFormTokenButton.shouldBe(visible, Duration.ofSeconds(5)).click();
 //        System.out.println(tokens.size());
 //        tokens.stream();
